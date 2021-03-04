@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http:www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Available Book</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div >
+		
+		<div th:if="${bookList !=null and bookList.size()!=0}" align="center">
+			
+			<table style="color: Navy;" align="center"
+				class="table">
+				<span>
+				<h2 class="text-primary" style="size:100px;">All Book available in store
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="showallcartitem" ><i  class="fas fa-shopping-cart">cart</i></a>
+				</h2>
+				</span>
+				
+				<thead>
+					<tr>
+						<th></th>
+						<th>Name</th>
+						<th>Author</th>
+						<th>Price</th>
+					</tr>
+				</thead>
+
+				<tr th:each="book: ${bookList}">
+					<td><img th:src="${'image/'+ book.imgName}" width="200" height="200">
+					<td><a th:href="@{bookdetail(bid=${book.bid})}"
+						th:text="${book.getBookName()}"></a></td>
+					<td th:text="${book.authorName}" />
+					<td th:text="${book.price}" />
+					<td><a th:href="@{addtocart(bid=${book.bid})}">add to cart</a></td>
+				</tr>
+				</tr>
+				</div>
+				</div>
+</body>
+</html>

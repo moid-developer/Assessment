@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Book details</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<span class="header" align="center">
+<h2 style="color:aqua;text-align:center">Book Detail</h2>
+</span>
+<div class="body " align="center">
+<table>
+<tr><td><img th:src="${'image/'+ detail.imgName}" width="200" height="200"/></td></tr>
+<tr>
+<div align="center">
+<table align="center">
+<tr><td>Book name:</td>
+<td th:text="${detail.bookName}"></td></tr>
+<tr><td>Author Name:</td>
+<td th:text="${detail.authorName}"></tr>
+<tr><td>Price:</td>
+<td th:text="${detail.price}"></tr>
+<tr><td>Description:</td></tr>
+<tr><td colspan="5"><p th:text="${detail.description}"></td></tr>
+</table>
+</div>
+</tr>
+</table>
+
+<span><a href="allBook">Previous page</a></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span style="text-align:right"><a href="home">Home</a></span>
+</div>
+
+</body>
+</html>

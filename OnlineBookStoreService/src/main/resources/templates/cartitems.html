@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.com">
+<head>
+<meta charset="ISO-8859-1">
+<title>Cart items</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<h1 style="text-align:center;color:navy;"> Cart</h1>
+<div th:if="${books !=null} and ${!books.isEmpty()}">
+
+<div class="header" align="center">
+<h2 style="color:navy;text-align:center"> Book in cart </h2></div>
+<div align="center">
+<table style="color:Navy;" align="center" class="table table-responsive">
+<tr th:each="b:${books}">
+<td><img th:src="${'image/'+ b.imgName}" width="200" height="200"></td>
+
+<td>
+<table><tr>
+<td th:text="${b.bookName}"/></tr>
+<tr>
+<td th:text="${b.price}"/></tr>
+<tr><td th:text="${b.discount}"/></tr>
+<form th:action="@{buyNow}" th:object="${book}" method="post">
+<tr>
+<td>Quantity :</td>
+<td><input type="text" th:field="*{qty}"></td>
+<td><input type="hidden" th:name="@{bid}" class="form control" th:value="${b.bid}" readonly="readonly">
+</tr>
+<tr><td colspan="2"><input type="submit" value="Buy now"></td></tr>
+</form>
+</table>
+</td>
+<td> <a th:href="@{removebook(bid=${b.bid})}"><i class="fas fa-trash"></i>delete</a></td>
+</tr>
+</table>
+</div>
+</div>
+<div align="center">
+<span><a href="allBook">previous page</a></span>  <span style="text-align:right"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="home">home</a> </span>
+</div>
+
+		
+</body>
+</html>
